@@ -1,22 +1,21 @@
 package org.ronil.library
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import androidx.viewbinding.ViewBinding
 
-inline fun <reified VB : ViewBinding, M> RecyclerView.setEasyAdapter(
+inline fun <reified VB : ViewBinding, M> RecyclerView.  setEasyAdapter(
     list: List<M>,
     manager: LayoutManager = LinearLayoutManager(context),
     crossinline onBindData: (VB, M, Int) -> Unit,
-): BaseRecyclerAdapter<M, VB> {
+): EasyRecyclerAdapter<M, VB> {
 
 
     val myAdapter =
-        object : BaseRecyclerAdapter<M, VB>() {
+        object : EasyRecyclerAdapter<M, VB>() {
             override fun inflateBinding(inflater: LayoutInflater, parent: ViewGroup): VB {
                 val method = VB::class.java.getMethod(
                     "inflate",

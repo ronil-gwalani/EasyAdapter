@@ -2,13 +2,12 @@ package org.ronil.library
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 
 
-abstract class BaseRecyclerAdapter<T, VB : ViewBinding> :
+abstract class EasyRecyclerAdapter<T, VB : ViewBinding> :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val mModelList = ArrayList<T>()
@@ -22,17 +21,17 @@ abstract class BaseRecyclerAdapter<T, VB : ViewBinding> :
 
     }
 
-    override fun getItemCount(): Int = mModelList.size
-
-    internal abstract fun onBindData(model: T, position: Int, dataBinding: VB)
-
-
-    internal abstract fun inflateBinding(inflater: LayoutInflater, parent: ViewGroup): VB
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder =
         DataViewHolder(
             inflateBinding(LayoutInflater.from(parent.context), parent)
         )
+
+    internal abstract fun inflateBinding(inflater: LayoutInflater, parent: ViewGroup): VB
+
+
+    override fun getItemCount(): Int = mModelList.size
+
+    internal abstract fun onBindData(model: T, position: Int, dataBinding: VB)
 
 
     @SuppressLint("NotifyDataSetChanged")
@@ -46,6 +45,10 @@ abstract class BaseRecyclerAdapter<T, VB : ViewBinding> :
         return mModelList
     }
 
+    fun addItem(item: T) {
+        mModelList.add(item)
+        notifyItemInserted(mModelList.size - 1)
+    }
 
     fun addMoreItems(aList: List<T>) {
         aList.forEach {
@@ -54,17 +57,6 @@ abstract class BaseRecyclerAdapter<T, VB : ViewBinding> :
         }
     }
 
-    fun addItem(item: T) {
-        mModelList.add(item)
-        notifyItemInserted(mModelList.size - 1)
-    }
-
-    fun removeItem(pos: Int) {
-        if (pos in 0 until mModelList.size) {
-            mModelList.removeAt(pos)
-            notifyItemRemoved(pos)
-        }
-    }
 
     fun removeItem(item: T) {
         val pos = mModelList.indexOf(item)
@@ -74,7 +66,15 @@ abstract class BaseRecyclerAdapter<T, VB : ViewBinding> :
         }
     }
 
-   internal fun getItem(position: Int): T = mModelList[position]
+    fun removeItem(pos: Int) {
+        if (pos in 0 until mModelList.size) {
+            mModelList.removeAt(pos)
+            notifyItemRemoved(pos)
+        }
+    }
+
+
+    internal fun getItem(position: Int): T = mModelList[position]
 
     @SuppressLint("NotifyDataSetChanged")
     fun clearList() {
@@ -91,3 +91,5 @@ abstract class BaseRecyclerAdapter<T, VB : ViewBinding> :
     }
 
 }
+
+
