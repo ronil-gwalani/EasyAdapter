@@ -44,18 +44,29 @@ Creating a new `RecyclerView.Adapter` for every list felt redundant. This librar
 
 ---
 
-
-
 ## 🚀 Getting Started
 
-### Step 1: Add Dependency
+### 🔧 Step 1: Add JitPack Repository
 
+```kotlin
+allprojects {
+    repositories {
+        maven { url = URI("https://jitpack.io") }
+    }
+}
+```
+
+
+
+### 📦 Step 2: Add Dependency
+
+In your **app-level `build.gradle`**:
 
 ```kotlin
 implementation ("com.github.ronil-gwalani:easyadapter:1.0.1")
 ```
 
-### Step 2: Initialize Your RecyclerView
+### 🧪 Step 3: Initialize Your RecyclerView
 
 ```kotlin
 val adapter = binding.recycler.setEasyAdapter<UserRowBinding, UserModel>(
