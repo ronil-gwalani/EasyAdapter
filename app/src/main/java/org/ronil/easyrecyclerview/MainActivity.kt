@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-//        setUpData.setAdapter(binding.recycler)
+        setUpData.setAdapter(binding.recycler)
 
     }
 

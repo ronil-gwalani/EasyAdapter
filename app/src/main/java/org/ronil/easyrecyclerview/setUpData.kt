@@ -7,9 +7,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.ronil.easyrecyclerview.databinding.UserRowBinding
-//import org.ronil.library.setEasyAdapter
+import org.ronil.library.setEasyAdapter
 
-/*
 object setUpData {
     private fun getDuymmyUsers(): List<UserModel> {
         return listOf(
@@ -243,21 +242,21 @@ object setUpData {
 //        adapter.removeItem(1)
 
 
-//        CoroutineScope(Dispatchers.Main).launch {
-//            delay(10000)
-//            adapter.setNewList(
-//                listOf(
-//                    UserModel(
-//                        "Rohit Verma",
-//                        "3",
-//                        "rohitv88@gmail.com",
-//                        "9823456781",
-//                        "Shivaji Nagar, Pune, Maharashtra",
-//                        "Male",true
-//                    ),
-//                )
-//            )
-//        }
+        CoroutineScope(Dispatchers.Main).launch {
+            delay(10000)
+            adapter.setNewList(
+                listOf(
+                    UserModel(
+                        "Rohit Verma",
+                        "3",
+                        "rohitv88@gmail.com",
+                        "9823456781",
+                        "Shivaji Nagar, Pune, Maharashtra",
+                        "Male",true
+                    ),
+                )
+            )
+        }
 
     }
 
@@ -271,4 +270,3 @@ object setUpData {
         var bool: Boolean = false
     )
 }
-*/
