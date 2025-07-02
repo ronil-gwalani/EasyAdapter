@@ -1,12 +1,16 @@
 package org.ronil.easyrecyclerview
 
-/*
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import org.ronil.easyrecyclerview.databinding.UserRowBinding
-import org.ronil.library.setEasyAdapter
+//import org.ronil.library.setEasyAdapter
 
-object setUpData{
+/*
+object setUpData {
     private fun getDuymmyUsers(): List<UserModel> {
         return listOf(
             UserModel(
@@ -173,7 +177,7 @@ object setUpData{
 
     }
 
-     fun setAdapter(recycler: RecyclerView) {
+    fun setAdapter(recycler: RecyclerView) {
 
         val list = getDuymmyUsers()
 
@@ -182,6 +186,8 @@ object setUpData{
                 list = list,
             ) { binding, model, index ->
                 binding.root.setOnClickListener {
+                    model.bool = !model.bool
+                    binding.tvUserName.text = model.name + model.bool
                     Toast.makeText(recycler.context, model.name, Toast.LENGTH_SHORT).show()
                 }
                 binding.tvUserName.text = model.name
@@ -191,8 +197,9 @@ object setUpData{
                 binding.tvAddress.text = model.address
                 binding.tvContact.text = model.contactNum
             }
-        adapter.getList()
-        adapter.clearList()
+//        adapter.getList()
+//        adapter.clearList()
+
         adapter.addItem(
             UserModel(
                 "Rohit Verma",
@@ -233,7 +240,24 @@ object setUpData{
                 ),
             )
         )
-        adapter.removeItem(1)
+//        adapter.removeItem(1)
+
+
+//        CoroutineScope(Dispatchers.Main).launch {
+//            delay(10000)
+//            adapter.setNewList(
+//                listOf(
+//                    UserModel(
+//                        "Rohit Verma",
+//                        "3",
+//                        "rohitv88@gmail.com",
+//                        "9823456781",
+//                        "Shivaji Nagar, Pune, Maharashtra",
+//                        "Male",true
+//                    ),
+//                )
+//            )
+//        }
 
     }
 
@@ -244,5 +268,7 @@ object setUpData{
         val contactNum: String,
         val address: String,
         val gender: String,
+        var bool: Boolean = false
     )
-}*/
+}
+*/
